@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,body{
+				padding:0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			img{
+				vertical-align: top;
+			}
+			#ul1{
+				width: 300px;
+				height: 300px;
+				/*background: yellow;*/
+			}
+			#ul1 li img{
+				width: 300px;
+				height: 300px;
+				display: none ;
+			}
+			#ul2 li img{
+				width: 40px;
+				height: 40px;
+				display: none ;
+				position: absolute;
+				left:-17px;
+				top:-45px;
+			}
+			#ul2{
+				width: 300px;
+				height: 30px;
+				/*background: red;*/
+				
+			}
+			#ul2 li{
+				width: 10px;
+				height: 10px;
+				background: red;
+				/*border: 1px solid red;*/
+				border-radius:50% ;
+				float: left;
+				margin-right: 10px;
+				margin-top: 10px;
+				position: relative;
+			}
+			.li1{
+				margin-left: 90px;
+			}
+			#btn1{
+				position: absolute;
+				left:0;
+				top: 140px;
+				background: rgba(0,0,0,.3);
+			}
+			#btn2{
+				position: absolute;
+				left:275px;
+				top: 140px;
+				background: rgba(0,0,0,.3);
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn1">&lt;</button>
+		<button id="btn2">&gt;</button>
+		<ul id="ul1">
+			<li>
+				<img style="display: block;" src="img/8.jpg" alt="" />
+			</li>
+			<li>
+				<img src="img/9.jpg" alt="" />
+			</li>
+			<li>
+				<img src="img/10.jpg" alt="" />
+			</li>
+			<li>
+				<img src="img/11.jpg" alt="" />
+			</li>
+			<li>
+				<img src="img/12.jpg" alt="" />
+			</li>
+		</ul>
+		<ul id="ul2">
+			<li class="li1" style="background: blue;">
+					<img src="img/8.jpg" alt="" />
+			</li>
+			<li>
+					<img src="img/9.jpg" alt="" />
+			</li>
+			<li>
+					<img src="img/10.jpg" alt="" />
+			</li>
+			<li>
+					<img src="img/11.jpg" alt="" />
+			</li>
+			<li>
+					<img src="img/12.jpg" alt="" />
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var ul1 = document.getElementById("ul1");
+			var ul2 = document.getElementById("ul2");
+			var ali2 = ul2.getElementsByTagName("li");
+			var aimg = ul1.getElementsByTagName("img");
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var aimg1 = ul2.getElementsByTagName("img");
+			var len1 = aimg.length;
+//			var len2 = aimg1.length;
+			for (var i=0; i<ali2.length;i++) {
+				ali2[i].index=i;
+				ali2[i].onclick=function(){
+					n=this.index
+					for (var i=0; i<ali2.length;i++) {
+						ali2[i].style.background=""
+						aimg[i].style.display="none"
+					}
+					this.style.background="blue"
+					aimg[this.index].style.display="block"
+				}
+			}
+			var n=0;
+			btn2.onclick=function(){
+				
+				n++;
+				if(n==len1-1){
+					n=0;
+				}
+				for (var i=0;i<len1;i++) {
+					aimg[i].style.display="none";
+					ali2[i].style.background="red";
+				}
+				aimg[n].style.display="block"
+				ali2[n].style.background="blue"
+			}
+			btn1.onclick=function(){
+				n--;
+				if(n==-1){
+					n=len1-1
+				}
+				for (var i=0;i<len1;i++) {
+					aimg[i].style.display="none";
+					ali2[i].style.background="red"
+				}
+				aimg[n].style.display="block";
+				ali2[n].style.background="blue";
+			}
+//			ali2[n].onmouseover =function(){
+//				aimg1[this].style.display="block";
+//			}
+//			ali2[n].onmouseout =function(){
+//				aimg1[this].style.display="none";
+//			}
+			for (var i=0; i<ali2.length;i++) {
+				ali2[i].index=i;
+				ali2[i].onmouseover=function(){
+					n=this.index
+					for (var i=0; i<ali2.length;i++) {
+						aimg1[i].style.display="none"
+					}
+					aimg1[this.index].style.display="block"
+				}
+			}
+			for (var i=0; i<ali2.length;i++) {
+				ali2[i].index=i;
+				ali2[i].onmouseout=function(){
+					n=this.index
+					for (var i=0; i<ali2.length;i++) {
+						aimg1[i].style.display="none"
+					}
+					aimg1[this.index].style.display="none"
+				}
+			}
+		</script>
+	</body>
+</html>
